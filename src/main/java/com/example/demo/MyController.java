@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +30,16 @@ public class MyController {
 	@GetMapping("/autowiredtest1")
 	public User getNotificationService1() {
 		//nb.sendMsg("swapg", "hey");
-		nb.sendEmail("swapg26@gmail.com", "swapg26@gmail.com", "hey swap hi", "abcd efg hijk lmn op qrst uvw xyz");
+		//nb.sendEmail("swapg26@gmail.com", "swapg26@gmail.com", "hey swap hi", "abcd efg hijk lmn op qrst uvw xyz");
+		try {
+			nb.sendHtmlEmail("swapg26@gmail.com", "hey swap hi", "abcd efg hijk lmn op qrst uvw xyz");
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return user;
 	}
