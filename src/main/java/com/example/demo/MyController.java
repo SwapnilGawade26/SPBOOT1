@@ -15,13 +15,20 @@ public class MyController {
 
 	@Autowired
 	NotificationService nb;
+
+	@Autowired
+	EmaiUser getAdmin;
+	
+	@Autowired
+	EmaiUser getHr;
+	
 	
 	@Autowired
 	//@Qualifier("emailService")
 	INotificationService smsService;
 	
 	@Autowired
-	@Qualifier("smsService")
+	@Qualifier("emailService")
 	INotificationService emailService;
 
 	User user = new User("swap", "swapg@gmail.com", 26);
@@ -48,8 +55,12 @@ public class MyController {
 
 	@GetMapping("/")
 	public String getPFile() {
-		smsService.sendMsg("sdf", "sdf");
-		emailService.sendMsg("sdf", "sdf");
+		/*
+		 * smsService.sendMsg("sdf", "sdf"); emailService.sendMsg("sdf", "sdf");
+		 */
+		
+		emailService.sendTypeMSg(getAdmin);
+		emailService.sendTypeMSg(getHr);
 		return "";
 	}
 

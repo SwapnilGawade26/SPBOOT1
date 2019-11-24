@@ -18,5 +18,13 @@ public class EmailService implements INotificationService {
 		return "";
 		
 	}
+
+	@Override
+	public String sendTypeMSg(EmaiUser e) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("username="+e.getUsername());
+		return "";
+	}
 	
 }
